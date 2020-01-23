@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-"""
-Jacopo Moioli
-8/12/19
-Programma che calcola la media delle diverse materie
-Per open-day badoni 14/12
-"""
+
 
 import sys
 
