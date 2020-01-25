@@ -23,6 +23,7 @@ import matplotlib
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import plot, ion, show
 from matplotlib import style
+from matplotlib import dates as mpldates
 from matplotlib.ticker import FuncFormatter
 
 matplotlib.use("Qt5Agg")  # mpl gui framework QT5
@@ -153,6 +154,8 @@ def makeSubjectGraph(materiaGrafico):
     ion()  # Impostare modalità interattiva MPL per eseguire il codice dopo la creazione del grafico
     dates = []
     voti = []
+
+    listavoti.sort(key=lambda voto:voto.data)    # Ordino la lista listavoti usanmdo come chiave voto.data
 
     for materia in listamaterie:
         if materia == materiaGrafico:
@@ -323,7 +326,7 @@ if __name__ == "__main__":
 Known Issues:
 - Dati rimanenti anche dopo il reset su plot MPL makeSubjectGraph
     ""Risolto"" temporaneamente a linea 179/180 con la chiusura del programma dopo il plot 
-- Problema con la linea che collega i voti (157) se non inseriti in ordine cronologico
+- [SOLVED] Problema con la linea che collega i voti (157) se non inseriti in ordine cronologico
     Fix se sorting manuale delle date (?)
 
 TODO: 
