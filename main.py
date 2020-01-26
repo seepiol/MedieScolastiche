@@ -149,13 +149,13 @@ def makeSubjectGraph(materiaGrafico):
 
     """
     print("[!]Creating the graph...")
-    print(listamaterie)
-    print(listavoti)
     ion()  # Impostare modalità interattiva MPL per eseguire il codice dopo la creazione del grafico
     dates = []
     voti = []
 
-    listavoti.sort(key=lambda voto:voto.data)    # Ordino la lista listavoti usanmdo come chiave voto.data
+    listavoti.sort(
+        key=lambda voto: voto.data
+    )  # Ordino la lista listavoti usanmdo come chiave voto.data
 
     for materia in listamaterie:
         if materia == materiaGrafico:
@@ -320,15 +320,3 @@ if __name__ == "__main__":
     widget.setLayout(grid)
     widget.show()
     sys.exit(app.exec_())
-
-
-"""
-Known Issues:
-- Dati rimanenti anche dopo il reset su plot MPL makeSubjectGraph
-    ""Risolto"" temporaneamente a linea 179/180 con la chiusura del programma dopo il plot 
-- [SOLVED] Problema con la linea che collega i voti (157) se non inseriti in ordine cronologico
-    Fix se sorting manuale delle date (?)
-
-TODO: 
-- Incorporare il dizionario materia:[voti]media in oggetto voto (e modificare i cicli)
-"""
