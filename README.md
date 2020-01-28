@@ -4,6 +4,8 @@ GUI program for the average of school grades written in python using PyQt5 for G
 ## Getting Started
 To use this program, read the following instructions
 
+>These instructions are based on GNU/Linux systems. If you want to help me open an docs issue and instructions based on your platform
+
 ### Download the program
 First of all, check if "git" is installed on your machine. The output should look like this
 ```
@@ -61,3 +63,8 @@ If you click "Grafico Materia", will be created the graph for the selected subje
 If you click on "Grafico Situazione" instead, the graph is the one about the general situation. 
 
 ![situationgraph](https://user-images.githubusercontent.com/60071372/73025077-3ada6e00-3e2f-11ea-96cc-0337787fd0eb.png)
+
+# Save the data
+You can save your tests data in a csv file, compatible with all spreadsheets programs (We suggest **[LibreOffice](https://www.libreoffice.org/) Calc** )
+
+> **Under Development**

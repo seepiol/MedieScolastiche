@@ -14,8 +14,6 @@ from PyQt5.QtWidgets import (
     QCalendarWidget,
     QComboBox,
 )
-from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import pyqtSlot, QDate
 
 import datetime
 
@@ -23,8 +21,7 @@ import matplotlib
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import plot, ion, show
 from matplotlib import style
-from matplotlib import dates as mpldates
-from matplotlib.ticker import FuncFormatter
+
 
 matplotlib.use("Qt5Agg")  # mpl gui framework QT5
 listamaterie = {}  # Dizionario
