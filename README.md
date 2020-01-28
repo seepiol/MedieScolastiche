@@ -54,7 +54,7 @@ By clicking "Add" the test will be saved. You can create multiple subjects chang
 
 The window that will appear will be like this
 
-![averagewindow](https://user-images.githubusercontent.com/60071372/73024979-08307580-3e2f-11ea-9b87-e2a249f2ea86.png)
+![averagewindow](https://user-images.githubusercontent.com/60071372/73304472-9d10e580-4218-11ea-9e49-c995c45b4ad4.png)
 
 If you click "Grafico Materia", will be created the graph for the selected subject.
 
@@ -67,4 +67,11 @@ If you click on "Grafico Situazione" instead, the graph is the one about the gen
 # Save the data
 You can save your tests data in a csv file, compatible with all spreadsheets programs (We suggest **[LibreOffice](https://www.libreoffice.org/) Calc** )
 
-> **Under Development**
+## How to
+This operation is really simple.
+When the "results windows" appears, click "Salva su File".
+It will automatically save the csv file (named "export.csv") in the current directory. 
+
+A popup will confirm the succesful save
+
+![savepopup](https://user-images.githubusercontent.com/60071372/73304754-232d2c00-4219-11ea-9fc4-8285a03e31b4.png)

@@ -2,7 +2,9 @@
 
 
 import sys
-
+import os
+import datetime
+import csv
 from PyQt5.QtWidgets import (
     QApplication,
     QWidget,
@@ -14,12 +16,8 @@ from PyQt5.QtWidgets import (
     QCalendarWidget,
     QComboBox,
 )
-
-import datetime
-
 import matplotlib
 from matplotlib import pyplot as plt
-from matplotlib.pyplot import plot, ion, show
 from matplotlib import style
 
 
@@ -118,7 +116,7 @@ def makeSituationGraph():
     """
     print("[!]Creating the graph...")
     style.use("ggplot")
-    ion()  # Impostare modalità interattiva MPL per eseguire il codice dopo la creazione del grafico
+    plt.ion()  # Impostare modalità interattiva MPL per eseguire il codice dopo la creazione del grafico
     names = []
     datas = []
 
@@ -146,7 +144,7 @@ def makeSubjectGraph(materiaGrafico):
 
     """
     print("[!]Creating the graph...")
-    ion()  # Impostare modalità interattiva MPL per eseguire il codice dopo la creazione del grafico
+    plt.ion()  # Impostare modalità interattiva MPL per eseguire il codice dopo la creazione del grafico
     dates = []
     voti = []
 
@@ -167,6 +165,26 @@ def makeSubjectGraph(materiaGrafico):
     plt.xlabel("Date")
     print("[!]Showing the graph")
     plt.show()
+
+
+def saveToCSV():
+    with open('export.csv', 'w') as csvfile:
+        writer = csv.writer(csvfile)
+        id = 0
+        writer.writerow(["id", "data", "materia", "voto"])
+        for voto in listavoti:
+            id+=1
+            writer.writerow([id, voto.data, voto.materia, voto.voto])
+    infoBox = QMessageBox()
+    infoBox.setIcon(QMessageBox.Information)
+    infoBox.setWindowTitle("Saved on file")
+    infoBox.setText(
+        f"File salvato correttamente\n"
+        f"{os.getcwd()+'/export.csv'}"
+    )
+    infoBox.setStandardButtons(QMessageBox.Ok)
+    infoBox.exec()
+
 
 
 def printResult():
@@ -209,22 +227,27 @@ def printResult():
     resultLabel.setText(msg)
     grid.addWidget(resultLabel, 0, 1)
 
-    okButton = QPushButton(resultWindow)
-    okButton.setText("OK")
-    okButton.clicked.connect(closeResult)
-    grid.addWidget(okButton, 1, 1)
-
-    grid.addWidget(selectionSubjectGraph, 2, 1)
+    grid.addWidget(selectionSubjectGraph, 1, 1)
 
     subjectGraphButton = QPushButton(resultWindow)
     subjectGraphButton.setText("Grafico materia")
     subjectGraphButton.clicked.connect(getGraphSubject)
-    grid.addWidget(subjectGraphButton, 3, 1)
+    grid.addWidget(subjectGraphButton, 2, 1)
 
     situationGraphButton = QPushButton(resultWindow)
     situationGraphButton.setText("Grafico Situazione")
     situationGraphButton.clicked.connect(makeSituationGraph)
-    grid.addWidget(situationGraphButton, 4, 1)
+    grid.addWidget(situationGraphButton, 3, 1)
+
+    csvSaveButton = QPushButton(resultWindow)
+    csvSaveButton.setText("Salva su File")
+    csvSaveButton.clicked.connect(saveToCSV)
+    grid.addWidget(csvSaveButton, 4, 1)
+
+    okButton = QPushButton(resultWindow)
+    okButton.setText("Esci")
+    okButton.clicked.connect(closeResult)
+    grid.addWidget(okButton, 5, 1)
 
     resultWindow.setGeometry(20, 20, 170, 100)
     resultWindow.setWindowTitle("Risultati")
